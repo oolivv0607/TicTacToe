@@ -1,0 +1,47 @@
+package com.company;
+import java.util.Scanner;
+
+public class Main {
+    public static int predkosc, hPodrozy, odleglosc;
+    public static int[] tab;
+
+    public static void Tabela(){
+        tab = new int[hPodrozy + 1];
+
+        for (int i = 0; i <= hPodrozy; i++)
+        {
+            odleglosc = predkosc * i;
+            tab[i] = odleglosc;
+        }
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Podaj predkosc z jaka jedzie pojazd");
+        Scanner scan = new Scanner(System.in);
+        predkosc = scan.nextInt();
+        if (predkosc < 0)
+        {
+            do {
+                System.out.println("Blad! Predkosc nie moze byc ujemna. Podaj liczbe jeszcze raz");
+                predkosc = scan.nextInt();
+            } while (predkosc < 0);
+        }
+
+        System.out.println("Podaj liczbe godzin podrozy");
+        Scanner scan2 = new Scanner(System.in);
+        hPodrozy = scan2.nextInt();
+        if (hPodrozy < 1)
+        {
+            do {
+                System.out.println("Blad! Czas podrozy nie moze byc mniejszy od 1h. Podaj liczbe jeszcze raz");
+                hPodrozy = scan2.nextInt();
+            } while (hPodrozy < 1);
+        }
+
+        Tabela();
+        for (int i = 1; i < tab.length; i++)
+        {
+            System.out.println("Godzina: " + i + " | Przebyta odleglosc: " + tab[i]);
+        }
+    }
+}

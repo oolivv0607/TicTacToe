@@ -1,0 +1,47 @@
+package com.company;
+import java.util.Scanner;
+
+public class Main {
+
+    public static int lata, miesiaceLacznie;
+    public static double cmOdpadow, odpadyLacznie, sredniPoziomOdpadow;
+
+    public static void Obliczanie() {
+        for (int rok = 1; rok <= lata; rok++)
+        {
+            for (int msc = 1; msc <= 12; msc++)
+            {
+                System.out.println("Podaj liczbe cm odpadow dla miesiaca: " + msc);
+                Scanner scan2 = new Scanner(System.in);
+                cmOdpadow = scan2.nextDouble();
+
+                if(cmOdpadow <= 0)
+                {
+                    do {
+                        System.out.println("Blad. Miesieczne odpady nie moga przyjmowac wartosci ujemnych. Podaj liczbe jeszcze raz");
+                        Scanner scan3 = new Scanner(System.in);
+                        cmOdpadow= scan3.nextDouble();
+                    } while(cmOdpadow <= 0);
+                }
+
+                odpadyLacznie += cmOdpadow;
+                miesiaceLacznie = lata * 12;
+                sredniPoziomOdpadow = odpadyLacznie / miesiaceLacznie;
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Podaj liczbę lat");
+        Scanner scan = new Scanner(System.in);
+        lata = scan.nextInt();
+
+        if (lata < 1)
+            System.out.println("Blad. Liczba lat nie moze byc mniejsza od 1");
+        else
+        {
+            Obliczanie();
+            System.out.println("Liczba miesiecy: " + miesiaceLacznie + "\nLaczna liczba cm odpadow: " + odpadyLacznie + "\nSredni poziom odpadow: " + sredniPoziomOdpadow);
+        }
+    }
+}

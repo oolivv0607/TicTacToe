@@ -1,0 +1,40 @@
+package com.company;
+import java.util.Scanner;
+
+public class Main {
+    public static int silnia(int n){
+        if (n == 0)
+            return 1;
+        else
+            return (n*silnia(n-1));
+    }
+
+    public static int fibbonaci(int m) {
+        if (m == 0)
+            return 0;
+        else if (m == 1)
+            return 1;
+        else
+            return (fibbonaci(m-1)+fibbonaci(m-2));
+    }
+
+    public static void main(String[] args) {
+        /*System.out.println(silnia(6));
+        int silnia = 1;
+        for (int i = 1; i <= 6; i++)
+        {
+            silnia = silnia * i;
+        }
+        System.out.println(silnia);*/
+
+        //System.out.println(fibbonaci(10));
+        int fib = 0, a = 1, poprzedni = 0;
+        for (int i = 2; i <= 10; i++)
+        {
+                int tymczasowa = a;
+                a += poprzedni;
+                poprzedni = tymczasowa;
+        }
+        System.out.println(a);
+    }
+}

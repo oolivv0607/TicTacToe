@@ -1,0 +1,44 @@
+package com.company;
+import java.util.Scanner;
+
+public class Main {
+    public static int dzien, grosze, ileDni;
+    public static double[] tabZWynagrodzeniem;
+    public static double zlotowki, suma;
+
+    public static void Wynagrodzenie() {
+        tabZWynagrodzeniem = new double[ileDni];
+
+        for (dzien = 0; dzien < ileDni; dzien++)
+        {
+            grosze = (int) Math.pow(2, dzien);
+            zlotowki = (double) grosze / 100;
+            tabZWynagrodzeniem[dzien] = zlotowki;
+            suma += zlotowki;
+        }
+        suma *= 100;
+        suma = Math.round(suma);
+        suma /= 100;
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Podaj liczbe przepracowanych dni");
+        Scanner scan = new Scanner(System.in);
+        ileDni = scan.nextInt();
+        if (ileDni < 1)
+        {
+            do {
+                System.out.println("Blad! Liczba dni nie moze byc mniejsza od 1. Podaj liczbe jeszcze raz");
+                ileDni = scan.nextInt();
+            } while (ileDni < 1);
+        }
+
+        Wynagrodzenie();
+
+        for (int i = 0; i < ileDni; i++)
+        {
+            System.out.println("Dzien: " + (i+1) + " | Wynagrodzenie: " + tabZWynagrodzeniem[i] + " zł");
+        }
+        System.out.println("Sumaryczna zaplata za okres " + ileDni + " dni wynosi " + suma + " zł");
+    }
+}

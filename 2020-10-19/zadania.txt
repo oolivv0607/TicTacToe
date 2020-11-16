@@ -1,0 +1,222 @@
+1.
+package com.company;
+import java.util.Scanner;
+public class Main {
+
+    public static void main(String[] args) {
+	System.out.println("Podaj liczbe z zakresu 1-10");
+	Scanner scan = new Scanner(System.in);
+	int liczba = scan.nextInt();
+
+	switch (liczba){
+        case 1:
+            System.out.println("Liczba rzymska to I");
+            break;
+        case 2:
+            System.out.println("Liczba rzymska to II");
+            break;
+        case 3:
+            System.out.println("Liczba rzymska to III");
+            break;
+        case 4:
+            System.out.println("Liczba rzymska to IV");
+            break;
+        case 5:
+            System.out.println("Liczba rzymska to V");
+            break;
+        case 6:
+            System.out.println("Liczba rzymska to VI");
+            break;
+        case 7:
+            System.out.println("Liczba rzymska to VII");
+            break;
+        case 8:
+            System.out.println("Liczba rzymska to VIII");
+            break;
+        case 9:
+            System.out.println("Liczba rzymska to IX");
+            break;
+        case 10:
+            System.out.println("Liczba rzymska to X");
+            break;
+        default:
+            System.out.println("BLAD - podana liczba nie jest z zakresu 1-10");
+    }
+    }
+}
+
+
+2.
+package com.company;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("Podaj dzien");
+        int dzien = scan.nextInt();
+
+        System.out.println("Podaj miesiac");
+        int msc = scan.nextInt();
+
+        System.out.println("Podaj dwie ostatnie cyfry roku");
+        int rok = scan.nextInt();
+
+        int iloczyn = dzien * msc;
+
+        if(iloczyn == rok)
+        {
+            System.out.println("Data jest magiczna");
+        }
+        else
+        {
+            System.out.println("Data nie jest magiczna");
+        }
+    }
+}
+
+3.
+package com.company;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("Podaj swoja wage ");
+        double waga = scan.nextDouble();
+
+        System.out.println("Podaj swoj wzrost ");
+        double wzrost = scan.nextDouble();
+
+        double bmi = waga / (wzrost * wzrost);
+
+        System.out.println("Twoje BMI wynosi: " + bmi);
+    }
+}
+
+4.
+package com.company;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
+        double w1, w2, w3, srednia;
+        int ocena;
+
+        System.out.println("Podaj wynik 1ego testu");
+        w1 = scan.nextDouble();
+
+        System.out.println("Podaj wynik 2ego testu");
+        w2 = scan.nextDouble();
+
+        System.out.println("Podaj wynik 3ego testu");
+        w3 = scan.nextDouble();
+
+        srednia = (w1 + w2 + w3) / 3;
+
+        if (srednia <= 100 && srednia >= 90)
+            ocena = 5;
+        else if (srednia <= 89 && srednia >= 80)
+            ocena = 4;
+        else if (srednia <= 79 && srednia >= 70)
+            ocena = 3;
+        else if (srednia <= 69 && srednia >= 60)
+            ocena = 2;
+        else
+            ocena = 1;
+
+        System.out.println("Srednia wynikow testow wynosi: " + srednia + ". Ocena: " + ocena);
+    }
+}
+
+5.
+package com.company;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        
+        System.out.println("Podaj mase obiektu");
+        double masa = scan.nextDouble();
+        
+        double ciezar = masa * 9.8;
+        
+        if (ciezar > 1000)
+            System.out.println("Obiekt jest zbyt ciezki");
+        else if
+    }
+}
+
+
+6.
+package com.company;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        Scanner scan2 = new Scanner(System.in);
+
+        System.out.println("Podaj nazwisko pierwszego biegacza");
+        String n1 = scan.nextLine();
+
+        System.out.println("Podaj czas ukonczenia biegu 1ego biegacza (w min)");
+        double cz1 = scan2.nextDouble();
+
+        System.out.println("Podaj nazwisko 2ego biegacza");
+        String n2 = scan.nextLine();
+
+        System.out.println("Podaj czas ukonczenia biegu 2ego biegacza (w min)");
+        double cz2 = scan2.nextDouble();
+
+        System.out.println("Podaj nazwisko 3ego biegacza");
+        String n3 = scan.nextLine();
+
+        System.out.println("Podaj czas ukonczenia biegu 3ego biegacza (w min)");
+        double cz3 = scan2.nextDouble();
+
+        double[] tab = new double[]{cz1, cz2, cz3};
+        double max = 0;
+
+        for (int i = 0; i < tab.length; i++)
+        {
+            if (tab[i] > max)
+            {
+                max = tab[i];
+            }
+        }
+
+        if (max == cz1)
+        {
+            if (cz2 > cz3)
+                System.out.println(n3 + ", " + n2 + ", " + n1);
+            else
+                System.out.println(n2 + ", " + n3 + ", " + n1);
+        }
+        else if (max == cz2)
+        {
+            if (cz1 > cz3)
+                System.out.println(n3 + ", " + n1 + ", " + n2);
+            else
+                System.out.println(n1 + ", " + n3 + ", " + n2);
+        }
+        else
+        {
+            if (cz1 > cz2)
+                System.out.println(n2 + ", " + n1 + ", " + n3);
+            else
+                System.out.println(n1 + ", " + n2 + ", " + n3);
+        }
+    }
+}
+

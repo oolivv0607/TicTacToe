@@ -1,0 +1,74 @@
+package com.company;
+import java.util.Scanner;
+
+public class Main {
+    public static int liczbaPieter, pietro, ilePokoiNaPietrze, pokojeLacznie, ileZajetychPokoi, zajetePokojeLacznie, pokojePuste;
+    public static double d, poziomOblozenia;
+    public static double[] poziomOblozeniaNaPietrze;
+    public static int[] liczbaZajetychPokoi;
+
+    public static void PobieranieInfo() {
+        liczbaZajetychPokoi = new int[liczbaPieter];
+
+        for (pietro = 1; pietro <= liczbaPieter; pietro++)
+        {
+            System.out.println("Podaj liczbe pokoi na pietrze " + pietro);
+            Scanner scan = new Scanner(System.in);
+            ilePokoiNaPietrze = scan.nextInt();
+            if (ilePokoiNaPietrze < 10)
+            {
+                do {
+                    System.out.println("Blad! Liczba pokoi nie moze byc mniejsza od 10. Podaj liczbe jeszcze raz");
+                    Scanner scan2 = new Scanner(System.in);
+                    ilePokoiNaPietrze = scan2.nextInt();
+                } while (ilePokoiNaPietrze < 10);
+            }
+            pokojeLacznie += ilePokoiNaPietrze;
+
+            System.out.println("Podaj liczbe zajetych pokoi");
+            Scanner scan3 = new Scanner(System.in);
+            ileZajetychPokoi = scan3.nextInt();
+
+            liczbaZajetychPokoi[pietro-1] = ileZajetychPokoi;
+
+            zajetePokojeLacznie += ileZajetychPokoi;
+
+            pokojePuste = pokojeLacznie - zajetePokojeLacznie;
+        }
+    }
+
+    public static void PoziomOblozeniaHotelu() {
+        poziomOblozeniaNaPietrze = new double[liczbaPieter];
+
+        for (int i = 0; i < liczbaPieter; i++)
+        {
+            d = liczbaZajetychPokoi[i];
+            poziomOblozenia = d / pokojeLacznie;
+            poziomOblozeniaNaPietrze[i] = poziomOblozenia;
+            System.out.println("Poziom oblozenia na pietrze " + (i+1) + " wynosi " + poziomOblozeniaNaPietrze[i]);
+        }
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Podaj liczbe pieter");
+        Scanner lP = new Scanner(System.in);
+        liczbaPieter = lP.nextInt();
+
+        if (liczbaPieter < 1)
+        {
+            do {
+                System.out.println("Blad! Liczba pokoi nie moze być mniejsza od 1. Podaj liczbe ponownie");
+                Scanner lP2 = new Scanner(System.in);
+                liczbaPieter = lP2.nextInt();
+            } while (liczbaPieter < 1);
+        }
+
+        PobieranieInfo();
+        System.out.println("Laczna liczba pokoi w hotelu: " + pokojeLacznie);
+        System.out.println("Laczna liczba zajetych pokoi: " + zajetePokojeLacznie);
+        System.out.println("Laczna liczba pustych pokoi:" + pokojePuste);
+        System.out.println();
+        PoziomOblozeniaHotelu();
+
+    }
+}

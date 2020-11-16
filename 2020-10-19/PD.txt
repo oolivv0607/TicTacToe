@@ -1,0 +1,300 @@
+1.
+package com.company;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        int liczba, product = 0;
+        while (product < 100) {
+            System.out.println("Podaj liczbe");
+            Scanner scan = new Scanner(System.in);
+            liczba = scan.nextInt();
+            product += liczba * 10;
+        }
+        System.out.println("Wyszla liczba: " + product);
+    }
+}
+
+
+2. 
+package com.company;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        String odp;
+        int l1, l2;
+        do {
+            System.out.println("Podaj 1. liczbe");
+            Scanner scan1 = new Scanner(System.in);
+            l1 = scan1.nextInt();
+
+            System.out.println("Podaj 2. liczbe");
+            Scanner scan2 = new Scanner(System.in);
+            l2 = scan2.nextInt();
+
+            System.out.println("Suma wynosi: " + (l1 + l2));
+
+            System.out.println("Czy ponownie wynonac operacje?");
+            Scanner scan3 = new Scanner(System.in);
+            odp = scan3.nextLine();
+        } while (odp.equals("tak"));
+    }
+}
+
+
+3.
+package com.company;
+
+public class Main {
+
+    public static void main(String[] args) {
+        for (int i = 0; i <= 1000; )
+        {
+            System.out.print(i + " ");
+            i += 10;
+        }
+    }
+}
+
+
+4.
+package com.company;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        int suma = 0, liczba;
+
+        for (int i = 0; i < 10; i++)
+        {
+            System.out.println("Podaj liczbe");
+            Scanner scan = new Scanner(System.in);
+            liczba = scan.nextInt();
+
+            suma += liczba;
+        }
+        System.out.println("Suma wynosi: " + suma);
+    }
+}
+
+
+5. 
+package com.company;
+
+public class Main {
+
+    public static void main(String[] args) {
+        double suma = 0.0;
+
+
+        for (double i = 1.0; i <= 10; i++)
+        {
+            suma += i / (11 - i);
+        }
+        System.out.println("Suma wynosi: " + suma);
+    }
+}
+
+
+6.
+package com.company;
+
+public class Main {
+
+    public static void main(String[] args) {
+        for (int i = 0; i < 10; i++)
+        {
+            for (int j = 0; j < 15; j++)
+            {
+                System.out.print("# ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+7.
+package com.company;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner keyboard = new Scanner(System.in);
+        int x = 1;
+
+        do
+        {
+            System.out.print("Podaj liczbe: ");
+            x = keyboard.nextInt();
+        } while (x > 0);
+    }
+}
+
+
+8.
+package com.company;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner keyboard = new Scanner(System.in);
+        String input;
+        char sure = ' ';
+
+        while (sure != 'T' && sure != 'N') {
+            System.out.print("Na pewno chcesz zakonczyc prace? ");
+            input = keyboard.next();
+            sure = input.charAt(0);
+        }
+    }
+}
+
+
+9.
+package com.company;
+
+public class Main {
+
+    public static void main(String[] args) {
+        for (int count = 0; count < 50; count++)
+        {
+            System.out.println("Count ma wartosc " + count + ".");
+        }
+    }
+}
+
+
+10.
+package com.company;
+
+public class Main {
+
+    public static void main(String[] args) {
+        int x = 50;
+
+        while (x > 0) {
+            System.out.println(x + " sek do konca");
+            x--;
+        }
+    }
+}
+
+
+11.
+package com.company;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        System.out.println("Podaj liczbe z zakresu 1-4");
+        Scanner scan = new Scanner(System.in);
+        int l = scan.nextInt();
+
+        if (l >= 1 && l <= 4)
+            System.out.println("ok");
+        else
+            System.out.println("Podana liczba nie nalezy do zakresu 1-4");
+    }
+}
+
+
+12.
+package com.company;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        System.out.println("wpisz tak lub nie");
+        Scanner scan = new Scanner(System.in);
+        String slowo = scan.nextLine();
+
+        if (slowo.equals("tak") || slowo.equals("nie"))
+            System.out.println("ok");
+        else
+            System.out.println("blad");
+    }
+}
+
+
+13.
+package com.company;
+
+public class Main {
+
+    public static void main(String[] args) {
+        for (int i = 7; i >= 0; i--)
+        {
+            for (int j = 0; j <= i; j++)
+            {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+14.
+package com.company;
+
+public class Main {
+
+    public static void main(String[] args) {
+        for (int i = 0; i < 6; i++)
+        {
+            System.out.print("*");
+            for (int j = 0; j <= i; j++)
+            {
+                if (j == i)
+                    System.out.print("*");
+                else
+                    System.out.print(" ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+15.
+package com.company;
+import java.util.Random;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Random r = new Random();
+        int liczba = r.nextInt(10) + 1;
+        System.out.print(liczba);
+    }
+}
+
+
+16.
+package com.company;
+import java.util.Random;
+
+public class Main {
+
+    public static void main(String[] args) {
+        int licznik = 0;
+        do {
+            Random r = new Random();
+            int liczba = r.nextInt(2);
+            if (liczba == 0)
+                System.out.println("nie");
+            else
+                System.out.println("tak");
+            licznik++;
+        } while (licznik < 10);
+    }
+}

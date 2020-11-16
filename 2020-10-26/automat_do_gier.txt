@@ -1,0 +1,78 @@
+package com.company;
+import java.util.Scanner;
+import java.util.Random;
+
+public class Main {
+    public static int kwota, numer, kwotaWygrana, kwotaWygranaLacznie, kwotaWrzuconaLacznie;
+    public static String obrazek, los1, los2, los3, wynik, odp;
+
+    public static String LosowanieObrazka() {
+        Random los = new Random();
+        numer = los.nextInt(6);
+
+        switch (numer){
+            case 0:
+                obrazek = "Wisnie";
+                break;
+            case 1:
+                obrazek = "Pomarancze";
+                break;
+            case 2:
+                obrazek = "Sliwki";
+                break;
+            case 3:
+                obrazek = "Dzwonki";
+                break;
+            case 4:
+                obrazek = "Melony";
+                break;
+            default:
+                obrazek = "Bary";
+        }
+        return obrazek;
+    }
+
+    public static String jakiWynik() {
+        if (los1.equals(los2) && los2.equals(los3))
+        {
+            kwotaWygrana = kwota * 3;
+            wynik = "Gratulacje! Wylosowales trzy takie same slowa! Wygrales " + kwotaWygrana;
+        }
+        else if (los1.equals(los2) || los2.equals(los3) || los3.equals(los1))
+        {
+            kwotaWygrana = kwota * 2;
+            wynik = "Gratulacje! Wylosowales dwa takie same slowa! Wygrales " + kwotaWygrana;
+        }
+        else
+        {
+            kwotaWygrana = kwota * 0;
+            wynik = "Niestety! Wylosowane slowa nie pasuja do siebie. Wygrales " + kwotaWygrana;
+        }
+        return wynik;
+    }
+
+    public static void main(String[] args) {
+        do {
+            System.out.println("Podaj kwote pieniedzy, z jaka chcesz grac");
+            Scanner scan = new Scanner(System.in);
+            kwota = scan.nextInt();
+            kwotaWrzuconaLacznie += kwota;
+
+            System.out.println("Losowanie...");
+            los1 = LosowanieObrazka();
+            los2 = LosowanieObrazka();
+            los3 = LosowanieObrazka();
+            System.out.println("Wylosowano: " + los1 + " | " + los2 + " | " +los3);
+
+            wynik = jakiWynik();
+            System.out.println(wynik);
+            kwotaWygranaLacznie += kwotaWygrana;
+
+            System.out.println("Czy chcesz zagrac ponownie?");
+            Scanner scan2 = new Scanner(System.in);
+            odp = scan2.nextLine();
+        } while (odp.equals("tak"));
+
+        System.out.println("Zakonczyles gre. \nLaczna kwota wrzucona do automatu: " + kwotaWrzuconaLacznie + "\nLaczna kwota wygrana: " + kwotaWygranaLacznie);
+    }
+}

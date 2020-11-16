@@ -1,0 +1,30 @@
+package com.company;
+import java.util.Scanner;
+
+public class Main {
+    public static double budzet, wydatek, sumaBiezaca, roznica;
+    public static String odp;
+
+    public static double Wydatki(){
+        System.out.println("Podaj kwote wydatku");
+        Scanner scan = new Scanner(System.in);
+        wydatek = scan.nextDouble();
+        sumaBiezaca += wydatek;
+        return sumaBiezaca;
+    }
+    public static void main(String[] args) {
+        System.out.println("Podaj miesieczny budzet");
+        Scanner scan2 = new Scanner(System.in);
+        budzet = scan2.nextDouble();
+
+        do {
+            Wydatki();
+            System.out.println("Czy chcesz dodac kolejny wydatek?");
+            Scanner scan3 = new Scanner(System.in);
+            odp = scan3.nextLine();
+        } while(odp.equals("tak"));
+
+        roznica = budzet - sumaBiezaca;
+        System.out.println("Roznica wynosi: " + roznica);
+    }
+}

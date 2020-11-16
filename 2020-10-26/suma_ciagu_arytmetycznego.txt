@@ -1,0 +1,28 @@
+package com.company;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        System.out.println("Podaj liczbe niezerowa");
+        Scanner scan = new Scanner(System.in);
+        int liczba = scan.nextInt();
+        int suma = 0;
+
+        if (liczba <= 0)
+        {
+            do {
+                System.out.println("Blad. Podaj liczbe niezerowa");
+                Scanner scan2 = new Scanner(System.in);
+                liczba = scan2.nextInt();
+            } while (liczba <= 0);
+        }
+
+        for (int i = 1; i <= liczba; i++)
+        {
+            suma += i;
+        }
+
+        System.out.println("Suma ciagu wynosi: " + suma);
+    }
+}

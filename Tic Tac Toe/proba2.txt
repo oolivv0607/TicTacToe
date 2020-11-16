@@ -1,0 +1,200 @@
+package com.company;
+import java.util.Scanner;
+import java.util.Random;
+
+public class Main {
+    public static int size, sumaMoja, sumaKompa, nikogo;
+    public static String input, usersMark, computersMark;
+    public static String[][] ticTacToeBoard;
+    public static String[] array;
+    public static int row, column;
+    public static boolean gameOver = false, userIsWin = false, computerIsWin = false, isTaken = false, tie = false;
+
+    public static void PobieranieDanych() {
+        System.out.println("Podaj rozmiar tablicy");
+        Scanner scan = new Scanner(System.in);
+        size = scan.nextInt();
+        boolean condition1 = false;
+        do {
+            if (size < 3) {
+                System.out.println("Blad! Rozmiar tablicy nie moze byc mniejszy od 3. Podaj wartosc jeszcze raz");
+                size = scan.nextInt();
+            }
+            else {
+                condition1 = true;
+                ticTacToeBoard = new String[size+1][size+1];
+            }
+        } while (!condition1);
+
+        for(int i = 0; i < ticTacToeBoard.length; i++) {
+            for(int j = 0; j < ticTacToeBoard[i].length; j++) {
+                ticTacToeBoard[i][j] = " ";
+                ticTacToeBoard[0][i] = String.valueOf(i);
+                ticTacToeBoard[j][0] = String.valueOf(j);
+            }
+        }
+    }
+
+    public static void wyswietlanieTabeli(String[][] ticTacToeBoard){
+        for (String[] strings : ticTacToeBoard) {
+            for (String string : strings) {
+                System.out.print(string + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void WyborZnaku(){
+        System.out.println("Wybierz x lub o");
+        Scanner scan2 = new Scanner(System.in);
+        input = scan2.next();
+        boolean condition2 = false;
+        do {
+            if (input.equals("x")) {
+                condition2 = true;
+                usersMark = "x";
+                computersMark = "o";
+            }
+            else if (input.equals("o")) {
+                condition2 = true;
+                usersMark = "o";
+                computersMark = "x";
+            }
+            else {
+                System.out.println("Blad! Podany znak nie spelnia wymagan. Wprowadz znak jeszcze raz");
+                input = scan2.next();
+            }
+        } while(!condition2);
+    }
+
+    public static void TwojRuch(String usersMark){
+        System.out.println("Podaj nr wiersza");
+        Scanner scan = new Scanner(System.in);
+        row = scan.nextInt();
+        System.out.println("Podaj nr kolumny");
+        Scanner scan2 = new Scanner(System.in);
+        column = scan2.nextInt();
+        do {
+            if (ticTacToeBoard[row][column].equals(" "))
+            {
+                ticTacToeBoard[row][column] = usersMark;
+                isTaken = true;
+            }
+            else
+            {
+                System.out.println("Miejsce zajete! Podaj nr wiersza ponownie");
+                row = scan.nextInt();
+                System.out.println("Podaj nr kolumny");
+                column = scan2.nextInt();
+            }
+        } while(isTaken = false);
+    }
+
+    public static void RuchKomputera(String computersMark){
+        Random los = new Random();
+        row = los.nextInt(size) + 1;
+        Random los2 = new Random();
+        column = los2.nextInt(size) + 1;
+        do {
+            if (ticTacToeBoard[row][column].equals(" "))
+            {
+                ticTacToeBoard[row][column] = computersMark;
+                isTaken = true;
+            }
+            else
+            {
+                row = los.nextInt(size) + 1;
+                column = los2.nextInt(size) + 1;
+            }
+
+        } while(!isTaken);
+    }
+
+    public static boolean WygranaWiersze(String[][] ticTacToeBoard, String usersMark) {
+        for (int wiersze = 0; wiersze < size; wiersze++) {
+            boolean wygrana = true;
+            for (int kolumna = 0; kolumna < size; kolumna++) {
+                if (ticTacToeBoard[wiersze][kolumna] != usersMark) {
+                    wygrana = false;
+                    break;
+                }
+            }
+            if (wygrana) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static void Game(){
+
+
+
+        if (size % 2 == 0) {
+            for (int kolejka = 1; kolejka <= size * 2; kolejka++)
+            {
+                TwojRuch(usersMark);
+                wyswietlanieTabeli();
+                System.out.println("Ruch komputera...");
+                RuchKomputera(computersMark);
+                wyswietlanieTabeli();
+            }
+        }
+        else {
+            for (int kolejka = 1; kolejka <= size * size; kolejka++)
+            {
+                TwojRuch(usersMark);
+                wyswietlanieTabeli();
+                System.out.println("Ruch komputera...");
+                RuchKomputera(computersMark);
+                wyswietlanieTabeli();
+            }
+        }
+
+
+        for (int i = 1; i <= row; i++) {
+            for (int j = 1; j <= column; j++)
+            {
+                if (ticTacToeBoard[i][j] == usersMark) {
+                    sumaMoja++;
+                }
+                else if (ticTacToeBoard[i][j] == computersMark) {
+                    sumaKompa++;
+                }
+                else
+                {
+                    tie = true;
+                }
+            }
+        }
+
+        if (sumaMoja == size)
+        {
+            gameOver = true;
+            System.out.println("Wygrales!");
+        }
+        else if (sumaKompa == size)
+        {
+            gameOver = true;
+            System.out.println("Przegrales");
+        }
+        else if (sumaMoja + sumaKompa == size * size)
+        {
+            gameOver = true;
+            System.out.println("Remis!");
+        }
+    }
+
+    public static void main(String[] args) {
+        PobieranieDanych();
+
+        wyswietlanieTabeli(ticTacToeBoard);
+
+        WyborZnaku();
+
+        do {
+            Game();
+        } while (gameOver = false);
+
+    }
+}

@@ -1,0 +1,4 @@
+1. github - zainstalowac, zalozyć repozytorium "programy java" i dodawać po fragmencie, 
+	pobawić się
+2. linux - nauczyć się, ściągnać virtualboxa, ubuntu64 lts // kliknąć windows host
+	na linuxie java i intellij

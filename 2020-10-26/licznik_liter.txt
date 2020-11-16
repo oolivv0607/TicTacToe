@@ -1,0 +1,34 @@
+package com.company;
+import java.util.Scanner;
+
+public class Main {
+    public static String lanuchZnakow, wpisanyZnak;
+    public static char szukanyZnak;
+    public static char[] tabZnaki;
+    public static int ile;
+
+    public static void IleRazyWystepuje(String napis, char znak) {
+        tabZnaki = napis.toCharArray();
+
+        for (char c : tabZnaki) {
+            if (c == znak)
+                ile++;
+        }
+
+        System.out.println("Znak '" + znak + "' wystepuje " + ile + " razy");
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Podaj lancuch znakow");
+        Scanner scan = new Scanner(System.in);
+        lanuchZnakow = scan.nextLine().toLowerCase();
+
+
+        System.out.println("Podaj szukany znak");
+        Scanner scan2 = new Scanner(System.in);
+        wpisanyZnak = scan2.nextLine().toLowerCase();
+        szukanyZnak = wpisanyZnak.charAt(0);
+
+        IleRazyWystepuje(lanuchZnakow, szukanyZnak);
+    }
+}

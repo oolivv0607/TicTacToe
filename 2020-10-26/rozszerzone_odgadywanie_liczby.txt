@@ -1,0 +1,33 @@
+package com.company;
+import java.util.Scanner;
+import  java.util.Random;
+
+public class Main {
+    public static void main(String[] args) {
+        int wylosowana, liczba, proby = 1;
+        Random los = new Random();
+        wylosowana = los.nextInt(11);
+
+        do {
+            System.out.println("Odgadnij liczbe 0-10");
+            Scanner scan = new Scanner(System.in);
+            liczba = scan.nextInt();
+
+            if(liczba < wylosowana)
+            {
+                System.out.println("Liczba za mala. Sprobuj ponownie");
+                proby++;
+            }
+            else if (liczba > wylosowana)
+            {
+                System.out.println("Liczba za duza. Sprobuj ponownie");
+                proby++;
+            }
+            else
+            {
+                System.out.println("Gratulacje! Odgadles liczbe! \nLiczba prob: " + proby);
+            }
+        } while (liczba != wylosowana);
+
+    }
+}
